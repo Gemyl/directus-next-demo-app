@@ -1,9 +1,12 @@
-import ToDosList from "@/components/ToDos/ToDosList";
+"use server";
 
-export default function Home() {
+import ToDosList from "@/components/ToDos/ToDosList";
+import { getToDos } from "@/lib/dal";
+
+export default async function Home() {
+  const todosPromise = getToDos() as any;
+
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <ToDosList/>
-    </div>
+      <ToDosList toDosPromise={todosPromise}/>
   );
 }
