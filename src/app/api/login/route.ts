@@ -15,7 +15,7 @@ export async function POST(request: NextRequest) {
 
     try {
         const credentials = await directus.login(email, password, {mode: "json"});
-        cookiesStore.set("directus_access_token", String(credentials.access_token));
+        cookiesStore.set(process.env.ACCESS_TOKEN_NAME as string, String(credentials.access_token));
 
         const url = request.nextUrl.clone();
         url.pathname = "/"

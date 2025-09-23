@@ -4,7 +4,7 @@ import { cookies } from "next/headers";
 
 export async function logoutAction() {
     const cookiesStore = await cookies();
-    cookiesStore.delete("directus_access_token");
+    cookiesStore.delete(process.env.ACCESS_TOKEN_NAME as string);
 
     redirect("/login");
 }
