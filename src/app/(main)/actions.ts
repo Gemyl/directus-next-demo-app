@@ -1,6 +1,7 @@
 "use server"
 
-import { addTodo, removeTodo } from "@/lib/dal";
+import { Todo } from "@/components/ToDos/models";
+import { addTodo, editTodo, removeTodo } from "@/lib/dal";
 import { revalidatePath } from "next/cache";
 
 export async function addTodoAction(request: any) {
@@ -15,6 +16,13 @@ export async function removeTodoAction(request: {id: string}) {
 
     if(id) {
         await removeTodo({id});
+        revalidatePath("/");
+    }
+}
+
+export async function editTodoAction(request: Todo) {
+    if(request.id) {
+        await editTodo(request);
         revalidatePath("/");
     }
 }

@@ -3,7 +3,7 @@
 import { Todo } from "@/components/ToDos/models";
 import directus from "./directus";
 import { errorsHandler } from "@/lib/errors";
-import { createItem, deleteItem, readItems } from "@directus/sdk";
+import { createItem, deleteItem, readItems, updateItem } from "@directus/sdk";
 
 export async function getToDos() {
     return directus.request(
@@ -23,4 +23,14 @@ export async function removeTodo(request: {id: string}) {
     await directus.request(
         deleteItem("todos", request.id)
     ).catch((er) => {errorsHandler(er)});
+}
+
+export async function editTodo(request: Todo) {
+    await directus.request(updateItem(
+        "todos",
+        request.id,
+        {
+            title: request.title
+        }
+    )).catch((er) => errorsHandler(er));
 }
