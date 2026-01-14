@@ -5,7 +5,7 @@ import directus from "./directus";
 import { errorsHandler } from "@/lib/errors";
 import { createItem, deleteItem, readItems, updateItem } from "@directus/sdk";
 
-export async function getToDos() {
+export async function getToDos(): Promise<Todo[]> {
     return directus.request(
         readItems("todos")
     ).catch((er) => {errorsHandler(er)}) as Promise<Array<Todo>>;
