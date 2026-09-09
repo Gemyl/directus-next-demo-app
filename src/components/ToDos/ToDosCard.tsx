@@ -8,7 +8,7 @@ export default function TodoCard(todo: Todo) {
   const [updatedTodo, setUpdatedTodo] = useState({ title: todo.title });
 
   return (
-    <div className="flex flex-row justify-between items-center p-2 border border-gray-400 rounded-sm shadow shadow-black mr-2">
+    <div className="flex flex-row justify-between items-center p-2 border border-gray-400 rounded-pill shadow shadow-black mr-2">
       {isEdit ? (
         <input
           className="rounded-pill w-[65%] p-2 border border-gray-400"
