@@ -59,10 +59,6 @@ services:
 
       CACHE_TTL: $CACHE_TTL
 
-      FLOWS_TOKEN: $FLOWS_TOKEN
-      FLOWS_ENV_ALLOW_LIST: $FLOWS_ENV_ALLOW_LIST
-      IMPORT_IP_DENY_LIST: $IMPORT_IP_DENY_LIST
-
       # Make sure to set this in production
       # (see https://docs.directus.io/configuration/config-options/#general)
       # PUBLIC_URL: 'https://directus.example.com'
